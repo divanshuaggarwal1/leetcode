@@ -1,0 +1,22 @@
+class Solution {
+    public boolean uniqueOccurrences(int[] arr) 
+    {
+        int[] table = new int[2000];
+        for(int i = 0; i < arr.length; i++)
+        {
+            table[arr[i]+1000] += 1;
+        }
+       
+        for(int i = 0; i < table.length; i++)
+        {
+            if(table[i] != 0)
+            {
+                for(int j = table.length - 1; j > i; j--)
+                {
+                    if(table[j] != 0 && table[j] == table[i]) return false;
+                }
+            }
+        }
+        return true;
+    }
+}
